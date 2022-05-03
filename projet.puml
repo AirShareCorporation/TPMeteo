@@ -13,7 +13,7 @@ package Système {
         usecase "Geérer les rubriques" as admin
         usecase "Suspendre utilisateur" as timeout
         usecase "Bannir utilisateur" as ban
-        usecase "Acceder au forum" as forum
+        usecase "Acceder au forum (readonly)" as forum
         usecase "poster sur le  forum" as post
         usecase "Envoyer notifications" as notify
         usecase "S'authentifier" as connect
