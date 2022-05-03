@@ -1,0 +1,70 @@
+@startuml
+
+abstract class User{
+    -string first_name
+    -string last_name
+    -string mail_address
+    -hash password
+}
+
+enum Status {}
+
+class Client{}
+
+class Admin{}
+
+enum Role {}
+
+class Address{
+    -string building
+    -string street
+    -string additionnal
+}
+
+class City{
+    -string name
+    -string zipcode
+}
+
+class Department{
+    -string number
+    -string name
+}
+
+class Region{
+    -string name
+}
+
+abstract class Data{
+    -datetime datetime
+}
+
+class CensusData{
+    -mediumText data
+}
+class AirData{
+    -mediumText data
+}
+class MeteoData{
+    -mediumText data
+}
+
+User <|-- Client
+User <|-- Admin
+
+Data <|-- CensusData
+Data <|-- AirData
+Data <|-- MeteoData
+
+Admin --> Role
+User --> Status
+
+User "1..n" -- "1..1" Address
+Address "1..n" -- "1..1" City
+City "1..n" -- "1..1" Department
+Department "1..n" -- "1..1" Region
+CensusData "1..n" -- "1..1" Region
+MeteoData "1..n" -- "1..1" City
+AirData "1..n" -- "1..1" Region
+
+@enduml
