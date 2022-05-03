@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+package "Client" {
+  [Requete Http]
+}
+cloud {
+  [APIS]
+        [Recencement]
+        [Meteo]
+        [Qualite de l'air]
+
+}
+
+
+database "MySql" {
+  folder "Donnees client" {
+    [Comptes utilisateurs]
+    [Preferences]
+    [Messages Forum]
+  }
+
+}
+
+
+[Requete Http] <--> [APIS]
+[Requete Http] <--> [Comptes utilisateurs]
+[Requete Http] <--> [Preferences]
+[Requete Http] <--> [Messages Forum]
+[APIS] --> [Recencement]
+[APIS] --> [Meteo]
+[APIS] --> [Qualite de l'air]
+
+@enduml
