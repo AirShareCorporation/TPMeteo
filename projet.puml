@@ -1,0 +1,59 @@
+@startuml projet
+
+left to right direction
+
+actor :Anonyme:
+actor :Membre:
+actor :Admin:
+actor :Modérateur:
+
+
+
+package Système {
+        usecase "Geérer les rubriques" as admin
+        usecase "Suspendre utilisateur" as timeout
+        usecase "Bannir utilisateur" as ban
+        usecase "Acceder au forum (readonly)" as forum
+        usecase "poster sur le  forum" as post
+        usecase "Envoyer notifications" as notify
+        usecase "S'authentifier" as connect
+        usecase "Accéder aux données météo" as meteo
+        usecase "Créer un compte" as register
+        usecase  "Consulter l'historique entre 2 dates" as history
+        usecase  "Consulter les favoris" as favorite
+        usecase  "Créer un favori" as createFavorite
+        usecase  "Créer un fil de discussion" as createSubForum
+        usecase  "Choisir portée de notification" as notifRange
+        usecase  "Gérer les rôles" as roles
+
+}
+
+
+
+Anonyme <|- Membre
+Membre <|- Modérateur
+Modérateur <|- Admin
+Modérateur --> ban
+Admin --> roles
+Modérateur --> admin
+Admin --> notify
+Modérateur --> timeout
+post .-> connect : include
+meteo .-> connect : include
+ban .-> connect : include
+roles .-> connect : include
+notify .-> connect : include
+timeout .-> connect : include
+Membre --> meteo
+Membre --> post
+Membre --> createSubForum
+Anonyme --> forum
+Anonyme --> register
+notifRange .> notify : extends
+history .> meteo : extends
+favorite .> meteo : extends
+createFavorite .> favorite : extends
+
+
+
+@enduml
