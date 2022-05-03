@@ -29,9 +29,10 @@ package Système {
 }
 
 
-Anonyme <|-- Membre
-Membre <|-- Modérateur
-Modérateur <|-- Admin
+
+Anonyme <|- Membre
+Membre <|- Modérateur
+Modérateur <|- Admin
 Modérateur --> ban
 Admin --> roles
 Modérateur --> admin
@@ -39,15 +40,19 @@ Admin --> notify
 Modérateur --> timeout
 post .-> connect : include
 meteo .-> connect : include
+ban .-> connect : include
+roles .-> connect : include
+notify .-> connect : include
+timeout .-> connect : include
 Membre --> meteo
 Membre --> post
 Membre --> createSubForum
 Anonyme --> forum
 Anonyme --> register
-notifRange .-> notify
-history .-> meteo : extends
-favorite .-> meteo : extends
-createFavorite .-> favorite : extends
+notifRange .> notify : extends
+history .> meteo : extends
+favorite .> meteo : extends
+createFavorite .> favorite : extends
 
 
 
