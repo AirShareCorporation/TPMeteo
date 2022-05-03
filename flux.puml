@@ -21,10 +21,15 @@ database "MySql" {
     [Messages Forum]
   }
 
+  folder "Sauvegarde" {
+      [Donnees Scientifiques]
+    }
+
 }
 
 
 [Requete Http] <--> [APIS]
+[Donnees Scientifiques] --> [APIS]
 [Requete Http] <--> [Comptes utilisateurs]
 [Requete Http] <--> [Preferences]
 [Requete Http] <--> [Messages Forum]
