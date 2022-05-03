@@ -1,0 +1,32 @@
+@startuml projet
+
+left to right direction
+
+actor :Membre:
+actor :Anonyme:
+actor :Admin:
+
+
+
+package Système {
+        usecase "Bannir utilisateur" as ban
+        usecase "Acceder au forum" as forum
+        usecase "poster sur le  forum" as post
+        usecase "Envoyer notifications" as notify
+        usecase "s'Authentifier" as connect
+        usecase "Accéder aux données météo" as meteo
+}
+
+
+Anonyme <|-- Membre
+Admin --> ban
+Admin --> notify
+post .-> connect : include
+meteo .-> connect : include
+Membre --> meteo
+forum --> post
+Anonyme --> forum
+
+
+
+@enduml
