@@ -4,7 +4,7 @@ abstract class User{
     -string first_name
     -string last_name
     -string mail_address
-    -hash password
+    -string password
 }
 
 enum Status {}

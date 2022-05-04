@@ -1,0 +1,66 @@
+@startuml
+
+object Status {
+    <font color=blue><b>bigint id auto increment not null
+    varchar(50) name not null
+}
+
+object User{
+    <font color=blue><b>bigint id auto increment not null
+    varchar(50) first_name not null
+    varchar(50) last_name not null
+    varchar(50) mail_address not null
+    varchar(150) password not null
+    <font color=green><b>role_id bigint references role (id)
+    <font color=green><b>status_id bigint references status (id)
+}
+
+object Role {
+    <font color=blue><b>bigint id auto increment not null
+    varchar(50) name not null
+}
+
+object Address{
+    <font color=blue><b>bigint id auto increment not null
+    varchar(10) building
+    varchar(255) street not null
+    varchar(255) additionnal
+    <font color=green><b>city_id references city (id)
+}
+
+object City{
+    <font color=blue><b>bigint id auto increment not null
+    varchar(50) name not null
+    varchar(5) zipcode not null
+    <font color=green><b>department_id references department (id)
+}
+
+object Department{
+    <font color=blue><b>bigint id auto increment not null
+    varchar(2) number not null
+    varchar(50) name not null
+    <font color=green><b>region_id references region (id)
+}
+
+object Region{
+    <font color=blue><b>bigint id auto increment not null
+    insee_code int (2) not null
+    varchar(50) name not null
+}
+
+object CensusData{
+    <font color=blue><b>bigint id auto increment not null
+    datetime datetime not null
+    mediumText data not null
+}
+object AirData{
+    <font color=blue><b>bigint id auto increment not null
+    datetime datetime not null
+    mediumText data not null
+}
+object MeteoData{
+    <font color=blue><b>bigint id auto increment not null
+    datetime datetime not null
+    mediumText data not null
+}
+@enduml
