@@ -40,14 +40,16 @@ abstract class Data{
 }
 
 class CensusData{
-    -mediumText data
+    -float data
 }
 class AirData{
-    -mediumText data
+    -float data
 }
 class MeteoData{
-    -mediumText data
+    -float data
 }
+
+enum Unit{}
 
 User <|-- Client
 User <|-- Admin
@@ -58,6 +60,9 @@ Data <|-- MeteoData
 
 Admin --> Role
 User --> Status
+AirData --> Unit
+MeteoData --> Unit
+CensusData --> Unit
 
 User "1..n" -- "1..1" Address
 Address "1..n" -- "1..1" City

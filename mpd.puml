@@ -19,6 +19,10 @@ object Role {
     <font color=blue><b>bigint id auto increment not null
     varchar(50) name not null
 }
+object Unit {
+    <font color=blue><b>bigint id auto increment not null
+    varchar(50) name not null
+}
 
 object Address{
     <font color=blue><b>bigint id auto increment not null
@@ -51,17 +55,20 @@ object Region{
 object CensusData{
     <font color=blue><b>bigint id auto increment not null
     datetime datetime not null
-    mediumText data not null
+    float data not null
+    <font color=green><b>unit_it references unit (id)
 }
 object AirData{
     <font color=blue><b>bigint id auto increment not null
     datetime datetime not null
-    mediumText data not null
+    float data not null
+    <font color=green><b>unit_it references unit (id)
 }
 object MeteoData{
     <font color=blue><b>bigint id auto increment not null
     datetime datetime not null
-    mediumText data not null
+    float data not null
+    <font color=green><b>unit_it references unit (id)
 }
 
 User o-- Status
@@ -73,4 +80,7 @@ Department o-- Region
 MeteoData o-- City
 CensusData o-- Region
 AirData o-- Region
+AirData o-- Unit
+MeteoData o-- Unit
+CensusData o-- Unit
 @enduml
