@@ -63,4 +63,14 @@ object MeteoData{
     datetime datetime not null
     mediumText data not null
 }
+
+User o-- Status
+User o-- Role
+Address o-- City
+User o-- Address
+City o-- Department
+Department o-- Region
+MeteoData o-- City
+CensusData o-- Region
+AirData o-- Region
 @enduml
